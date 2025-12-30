@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophia Deng - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Additional styles for homepage */
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            background: transparent;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .star-icon {
+            width: 100%;
+            height: 100%;
+        }
+
+        .site-title {
+            font-family: 'Aileron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .site-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 80px;
+            left: -300px;
+            background-color: var(--white);
+            border: 2px solid var(--text-color);
+            padding: 2rem;
+            transition: left 0.3s ease;
+            z-index: 999;
+            box-shadow: 4px 4px 0 var(--text-color);
+        }
+
+        .nav-menu.open {
+            left: 2rem;
+        }
+
+        .nav-menu a {
+            display: block;
+            font-family: 'Aileron', sans-serif;
+            font-weight: 700;
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            border: 2px solid var(--text-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background-color: var(--highlight-color);
+            color: var(--white);
+            border-color: var(--highlight-color);
+        }
+
+        /* Main Content Sections */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            text-align: right;
+            padding-right: 3rem;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title .highlight-text {
+            color: var(--highlight-color);
+            font-style: italic;
+        }
+
+        .elevator-pitch {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .icon-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--text-color);
+            background-color: var(--highlight-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--text-color);
+        }
+
+        .resume-btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--text-color);
+            background-color: var(--highlight-color);
+            font-family: 'Aileron', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .resume-btn:hover {
+            background-color: var(--text-color);
+            color: var(--white);
+        }
+
+        /* Character Image Container */
+        .character-container {
+            position: fixed;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 500px;
+            z-index: 1;
+            transition: all 0.6s ease;
+        }
+
+        .character-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* About Section */
+        .about-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            position: relative;
+        }
+
+        .about-content {
+            flex: 1;
+            padding-left: 3rem;
+            z-index: 2;
+        }
+
+        .about-title {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* Scroll animations */
+        .character-container.scrolled {
+            transform: translateY(-50%) rotate(360deg) scale(1.2);
+        }
+
+        /* Stars decoration */
+        .star-decoration {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            z-index: 0;
+        }
+
+        .star-1 { top: 10%; left: 5%; }
+        .star-2 { top: 20%; right: 15%; }
+        .star-3 { bottom: 30%; left: 10%; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <svg class="star-icon" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+                <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
+            </svg>
+        </div>
+        <div>
+            <span class="site-title">Sophia Deng</span>
+            <span class="site-subtitle">SWE STUDENT</span>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu">
+        <a href="about.html">About</a>
+        <a href="education-experience.html">Education & Experience</a>
+        <a href="creative.html">Creative</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Decorative Stars -->
+    <svg class="star-decoration star-1" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+        <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
+    </svg>
+    <svg class="star-decoration star-2" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+        <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
+    </svg>
+
+    <!-- Character Image (Fixed Position) -->
+    <div class="character-container" id="characterContainer">
+        <img src="images/character-upper.png" alt="Character" class="character-img" id="characterImg">
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Hello, <span class="highlight-text">I'm Sophia!</span></h1>
+            <p class="elevator-pitch">
+                A passionate software engineering student with a love for creating innovative solutions and bringing ideas to life through code and design.
+            </p>
+            <div class="hero-buttons">
+                <button class="resume-btn" onclick="window.open('assets/resume.pdf', '_blank')">resume</button>
+                <button class="icon-btn" onclick="window.location.href='mailto:your.email@example.com'" title="Email">
+                    ✉
+                </button>
+                <button class="icon-btn" onclick="window.open('https://github.com/yourusername', '_blank')" title="GitHub">
+                    🐙
+                </button>
+                <button class="icon-btn" onclick="window.open('https://linkedin.com/in/yourusername', '_blank')" title="LinkedIn">
+                    in
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="about-title">About Me</h2>
+            <p class="about-text">
+                I'm a software engineering student with a passion for building meaningful projects that make a difference. 
+                My journey in tech has been driven by curiosity and a desire to constantly learn and grow.
+                <br><br>
+                When I'm not coding, you can find me exploring new technologies, working on creative projects, 
+                or enjoying a good cup of coffee while sketching out my next idea.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Toggle navigation menu
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('open');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('navMenu');
+            const menuIcon = document.querySelector('.menu-icon');
+            
+            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                menu.classList.remove('open');
+            }
+        });
+
+        // Scroll animation for character
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const characterContainer = document.getElementById('characterContainer');
+            const characterImg = document.getElementById('characterImg');
+            
+            // Calculate scroll progress (0 to 1)
+            const scrollProgress = Math.min(scrollTop / window.innerHeight, 1);
+            
+            // Animate character based on scroll
+            if (scrollProgress > 0.3) {
+                characterContainer.classList.add('scrolled');
+                // Change to full body image
+                characterImg.src = 'images/character-full.png';
+            } else {
+                characterContainer.classList.remove('scrolled');
+                // Change back to upper body image
+                characterImg.src = 'images/character-upper.png';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
