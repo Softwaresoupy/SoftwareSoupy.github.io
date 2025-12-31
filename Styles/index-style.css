@@ -18,7 +18,7 @@ body { overflow-x: hidden; }
 
 .hero-content { flex: 1; text-align: left; padding-left: 2rem; z-index: 2; }
 .hero-title { font-size: 5rem; margin-bottom: 1rem; }
-.hero-title .highlight-text { color: var(--highlight-color); font-style: italic; }
+.hero-title .highlight-text { color: var(--main-color); font-style: italic; }
 .elevator-pitch { font-size: 1.3rem; margin-bottom: 2rem; max-width: 700px; margin-right: auto; }
 .hero-buttons { display: flex; gap: 1rem; justify-content: flex-start; }
 
@@ -27,7 +27,7 @@ body { overflow-x: hidden; }
   height: 60px;
   border-radius: 50%;
   border: 2px solid var(--text-color);
-  background-color: var(--highlight-color);
+  background-color: var(--main-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,13 +47,13 @@ body { overflow-x: hidden; }
   padding: 1rem 2.5rem;
   border: 2px solid var(--text-color);
   border-radius: 25px;
-  background-color: var(--highlight-color);
+  background-color: var(--main-color);
   font-family: 'Aileron', sans-serif;
   font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.resume-btn:hover { transform: scale(1.1); background-color: var(--text-color); color: var(--highlight-color); }
+.resume-btn:hover { transform: scale(1.1); background-color: var(--text-color); color: var(--main-color); }
 
 .character-container {
   position: fixed;
