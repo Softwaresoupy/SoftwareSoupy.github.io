@@ -4,235 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sophia Deng - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Additional styles for homepage */
-        body {
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem 2rem;
-            background: transparent;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .menu-icon {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .star-icon {
-            width: 100%;
-            height: 100%;
-        }
-
-        .site-title {
-            font-family: 'Aileron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .site-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 400;
-            margin-left: 0.5rem;
-        }
-
-                /* Navigation Menu */
-        .nav-menu {
-            position: fixed;
-            top: 70px;
-            left: 2rem;
-            background-color: var(--highlight-color);
-            border: 2px solid var(--text-color);
-            border-radius: 25px;
-            padding: 0.5rem 1rem;
-            display: none;
-            z-index: 999;
-            box-shadow: 3px 3px 0 var(--text-color);
-        }
-
-        .nav-menu.open {
-            display: flex;
-            gap: 1rem;
-            flex-direction: row;
-        }
-
-        .nav-menu a {
-            font-family: 'Aileron', sans-serif;
-            font-weight: 700;
-            padding: 0.75rem 1.5rem;
-            border: 2px solid var(--text-color);
-            border-radius: 20px;
-            background-color: var(--white);
-            text-align: center;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .nav-menu a:hover {
-            background-color: var(--text-color);
-            color: var(--white);
-        }
-
-        /* Main Content Sections */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 4rem;
-            position: relative;
-        }
-
-        .hero-content {
-            flex: 1;
-            text-align: right;
-            padding-right: 3rem;
-            z-index: 2;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-title .highlight-text {
-            color: var(--highlight-color);
-            font-style: italic;
-        }
-
-        .elevator-pitch {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: flex-end;
-        }
-
-        .icon-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid var(--text-color);
-            background-color: var(--highlight-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.5rem;
-        }
-
-        .icon-btn:hover {
-            transform: scale(1.1);
-            background-color: var(--text-color);
-        }
-
-        .resume-btn {
-            padding: 1rem 2.5rem;
-            border: 2px solid var(--text-color);
-            background-color: var(--highlight-color);
-            font-family: 'Aileron', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .resume-btn:hover {
-            background-color: var(--text-color);
-            color: var(--white);
-        }
-
-        /* Character Image Container */
-        .character-container {
-            position: fixed;
-            right: 10%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 400px;
-            height: 500px;
-            z-index: 1;
-            transition: all 0.6s ease;
-        }
-
-        .character-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* About Section */
-        .about-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 4rem;
-            position: relative;
-        }
-
-        .about-content {
-            flex: 1;
-            padding-left: 3rem;
-            z-index: 2;
-        }
-
-        .about-title {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        /* Scroll animations */
-        .character-container.scrolled {
-            transform: translateY(-50%) rotate(360deg) scale(1.2);
-        }
-
-        /* Stars decoration */
-        .star-decoration {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            z-index: 0;
-        }
-
-        .star-1 { top: 10%; left: 5%; }
-        .star-2 { top: 20%; right: 15%; }
-        .star-3 { bottom: 30%; left: 10%; }
-    </style>
+    <link rel="stylesheet" href="Styles/style.css">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div>
             <span class="site-title">Sophia Deng</span>
-            <span class="site-subtitle">SWE STUDENT</span>
+            <span class="site-subtitle">CIT STUDENT</span>
         </div>
         <div class="menu-icon" onclick="toggleMenu()">
-            <svg class="star-icon" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+            <svg class="star-icon" viewBox="0 0 24 24" fill="#fdd271" stroke="black" stroke-width="1">
                 <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
             </svg>
         </div>
@@ -247,16 +29,16 @@
     </nav>
 
     <!-- Decorative Stars -->
-    <svg class="star-decoration star-1" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+    <svg class="star-decoration star-1" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1">
         <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
     </svg>
-    <svg class="star-decoration star-2" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+    <svg class="star-decoration star-2" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1">
         <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
     </svg>
 
     <!-- Character Image (Fixed Position) -->
     <div class="character-container" id="characterContainer">
-        <img src="images/character-upper.png" alt="Character" class="character-img" id="characterImg">
+        <img src="Images/character-upper.png" alt="Character" class="character-img" id="characterImg">
     </div>
 
     <!-- Hero Section -->
@@ -264,10 +46,10 @@
         <div class="hero-content">
             <h1 class="hero-title">Hello, <span class="highlight-text">I'm Sophia!</span></h1>
             <p class="elevator-pitch">
-                A passionate software engineering student with a love for creating innovative solutions and bringing ideas to life through code and design.
+                A blah blah blah blah lhabbjfkdjfj jdfkashfjsa blah blah blah balhsldfhajkfeihadvj.
             </p>
             <div class="hero-buttons">
-                <button class="resume-btn" onclick="window.open('assets/resume.pdf', '_blank')">resume</button>
+                <button class="resume-btn" onclick="window.open('Assets/resume.pdf', '_blank')">resume</button>
                 <button class="icon-btn" onclick="window.location.href='mailto:your.email@example.com'" title="Email">
                     ✉
                 </button>
@@ -286,11 +68,11 @@
         <div class="about-content">
             <h2 class="about-title">About Me</h2>
             <p class="about-text">
-                I'm a software engineering student with a passion for building meaningful projects that make a difference. 
-                My journey in tech has been driven by curiosity and a desire to constantly learn and grow.
+                BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH
+                BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH
                 <br><br>
-                When I'm not coding, you can find me exploring new technologies, working on creative projects, 
-                or enjoying a good cup of coffee while sketching out my next idea.
+                BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
+                BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
             </p>
         </div>
     </section>
@@ -323,14 +105,14 @@
             const scrollProgress = Math.min(scrollTop / window.innerHeight, 1);
             
             // Animate character based on scroll
-            if (scrollProgress > 0.3) {
+                if (scrollProgress > 0.3) {
                 characterContainer.classList.add('scrolled');
                 // Change to full body image
-                characterImg.src = 'images/character-full.png';
+                    characterImg.src = 'Images/character-full.jpg';
             } else {
                 characterContainer.classList.remove('scrolled');
                 // Change back to upper body image
-                characterImg.src = 'images/character-upper.png';
+                    characterImg.src = 'Images/character-upper.png';
             }
             
             lastScrollTop = scrollTop;
