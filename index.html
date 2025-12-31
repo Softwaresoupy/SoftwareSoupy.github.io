@@ -6,16 +6,20 @@
     <title>Sophia Deng - Portfolio</title>
     <link rel="stylesheet" href="Styles/style.css">
     <link rel="stylesheet" href="Styles/index-style.css">
+    <script src="Scripts/main.js" defer></script>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div>
-            <span class="site-title">Sophia Deng</span>
-            <span class="site-subtitle">SWE STUDENT</span>
-        </div>
+        <a href="index.html">
+            <div>
+                <span class="site-title">Sophia Deng</span>
+                <span class="site-subtitle">SWE STUDENT</span>
+            </div>
+        </a>
         <!-- Navigation Menu -->
         <nav class="nav-menu" id="navMenu">
+            <a href="index.html">Home</a>
             <a href="about-me.html">About</a>
             <a href="education-experience.html">Education & Experience</a>
             <a href="creative.html">Creative</a>
@@ -53,16 +57,16 @@
                 A blah blah blah blah lhabbjfkdjfj jdfkashfjsa blah blah blah balhsldfhajkfeihadvj.
             </p>
             <div class="hero-buttons">
-                <button class="resume-btn" onclick="window.open('Assets/resume.pdf', '_blank')">
+                <button class="resume-btn" onclick="window.open('Assets/sophia-deng-resume.pdf', '_blank')">
                     resume
                 </button>
-                <button class="icon-btn" onclick="window.location.href='mailto:your.email@example.com'" title="Email">
+                <button class="icon-btn" onclick="window.location.href='mailto:dengs365128@gmail.com'" title="Contact Inquiry">
                     ✉
                 </button>
-                <button class="icon-btn" onclick="window.open('https://github.com/yourusername', '_blank')" title="GitHub">
-                    🐙
+                <button class="icon-btn" onclick="window.open('https://github.com/Softwaresoupy', '_blank')" title="GitHub" id="githubBtn">
+                    <img src="Images/github-mark.png" alt="github logo" class="github-img" id="githubImg">
                 </button>
-                <button class="icon-btn" onclick="window.open('https://linkedin.com/in/yourusername', '_blank')" title="LinkedIn">
+                <button class="icon-btn" onclick="window.open('https://www.linkedin.com/in/sophia-deng-54ba372a7/', '_blank')" title="LinkedIn">
                     in
                 </button>
             </div>
@@ -83,84 +87,5 @@
         </div>
     </section>
 
-    <script>
-        // Hover / focus-based nav open/close
-        const menu = document.getElementById('navMenu');
-        const menuIcon = document.querySelector('.menu-icon');
-
-        function openMenu() {
-            if (!menu.classList.contains('open')) {
-                menu.classList.add('open');
-                menuIcon.setAttribute('aria-expanded', 'true');
-            }
-        }
-
-        function closeMenu() {
-            if (menu.classList.contains('open')) {
-                menu.classList.remove('open');
-                menuIcon.setAttribute('aria-expanded', 'false');
-            }
-        }
-
-        let leaveTimer;
-        function handleLeave() {
-            clearTimeout(leaveTimer);
-            leaveTimer = setTimeout(() => {
-                const iconHovered = menuIcon.matches(':hover');
-                const menuHovered = menu.matches(':hover');
-                const menuFocused = menu.contains(document.activeElement);
-                const iconFocused = (document.activeElement === menuIcon);
-
-                if (!iconHovered && !menuHovered && !menuFocused && !iconFocused) {
-                    closeMenu();
-                }
-            }, 80); // small delay to avoid flicker
-        }
-
-        // Keep menu open when hovering icon or nav
-        menuIcon.addEventListener('mouseenter', openMenu);
-        menu.addEventListener('mouseenter', openMenu);
-
-        // Close when leaving both
-        menuIcon.addEventListener('mouseleave', handleLeave);
-        menu.addEventListener('mouseleave', handleLeave);
-
-        // Accessibility: open on focus, close on blur/out
-        menuIcon.addEventListener('focus', openMenu);
-        menuIcon.addEventListener('blur', handleLeave);
-        menu.addEventListener('focusin', openMenu);
-        menu.addEventListener('focusout', handleLeave);
-
-        // Click outside to close
-        document.addEventListener('click', function(event) {
-            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-                closeMenu();
-            }
-        });
-
-        // Scroll animation for character (unchanged)
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const characterContainer = document.getElementById('characterContainer');
-            const characterImg = document.getElementById('characterImg');
-
-            // Calculate scroll progress (0 to 1)
-            const scrollProgress = Math.min(scrollTop / window.innerHeight, 1);
-
-            // Animate character based on scroll
-            if (scrollProgress > 0.3) {
-                characterContainer.classList.add('scrolled');
-                // Change to full body image
-                characterImg.src = 'Images/character-full.jpg';
-            } else {
-                characterContainer.classList.remove('scrolled');
-                // Change back to upper body image
-                characterImg.src = 'Images/character-upper.png';
-            }
-
-            lastScrollTop = scrollTop;
-        });
-    </script>
 </body>
 </html>
