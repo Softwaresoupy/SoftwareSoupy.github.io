@@ -5,28 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sophia Deng - Portfolio</title>
     <link rel="stylesheet" href="Styles/style.css">
+    <link rel="stylesheet" href="Styles/index-style.css">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div>
             <span class="site-title">Sophia Deng</span>
-            <span class="site-subtitle">CIT STUDENT</span>
+            <span class="site-subtitle">SWE STUDENT</span>
         </div>
-        <div class="menu-icon" onclick="toggleMenu()">
+        <!-- Navigation Menu -->
+        <nav class="nav-menu" id="navMenu">
+            <a href="about-me.html">About</a>
+            <a href="education-experience.html">Education & Experience</a>
+            <a href="creative.html">Creative</a>
+            <a href="contact.html">Contact</a>
+            
+        </nav>
+        <div class="menu-icon" tabindex="0" role="button" aria-controls="navMenu" aria-expanded="false">
             <svg class="star-icon" viewBox="0 0 24 24" fill="#fdd271" stroke="black" stroke-width="1">
                 <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
             </svg>
         </div>
+
     </header>
 
-    <!-- Navigation Menu -->
-    <nav class="nav-menu" id="navMenu">
-        <a href="about.html">About</a>
-        <a href="education-experience.html">Education & Experience</a>
-        <a href="creative.html">Creative</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+
 
     <!-- Decorative Stars -->
     <svg class="star-decoration star-1" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1">
@@ -49,7 +53,9 @@
                 A blah blah blah blah lhabbjfkdjfj jdfkashfjsa blah blah blah balhsldfhajkfeihadvj.
             </p>
             <div class="hero-buttons">
-                <button class="resume-btn" onclick="window.open('Assets/resume.pdf', '_blank')">resume</button>
+                <button class="resume-btn" onclick="window.open('Assets/resume.pdf', '_blank')">
+                    resume
+                </button>
                 <button class="icon-btn" onclick="window.location.href='mailto:your.email@example.com'" title="Email">
                     ✉
                 </button>
@@ -78,43 +84,81 @@
     </section>
 
     <script>
-        // Toggle navigation menu
-        function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('open');
+        // Hover / focus-based nav open/close
+        const menu = document.getElementById('navMenu');
+        const menuIcon = document.querySelector('.menu-icon');
+
+        function openMenu() {
+            if (!menu.classList.contains('open')) {
+                menu.classList.add('open');
+                menuIcon.setAttribute('aria-expanded', 'true');
+            }
         }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('navMenu');
-            const menuIcon = document.querySelector('.menu-icon');
-            
-            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+        function closeMenu() {
+            if (menu.classList.contains('open')) {
                 menu.classList.remove('open');
+                menuIcon.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        let leaveTimer;
+        function handleLeave() {
+            clearTimeout(leaveTimer);
+            leaveTimer = setTimeout(() => {
+                const iconHovered = menuIcon.matches(':hover');
+                const menuHovered = menu.matches(':hover');
+                const menuFocused = menu.contains(document.activeElement);
+                const iconFocused = (document.activeElement === menuIcon);
+
+                if (!iconHovered && !menuHovered && !menuFocused && !iconFocused) {
+                    closeMenu();
+                }
+            }, 80); // small delay to avoid flicker
+        }
+
+        // Keep menu open when hovering icon or nav
+        menuIcon.addEventListener('mouseenter', openMenu);
+        menu.addEventListener('mouseenter', openMenu);
+
+        // Close when leaving both
+        menuIcon.addEventListener('mouseleave', handleLeave);
+        menu.addEventListener('mouseleave', handleLeave);
+
+        // Accessibility: open on focus, close on blur/out
+        menuIcon.addEventListener('focus', openMenu);
+        menuIcon.addEventListener('blur', handleLeave);
+        menu.addEventListener('focusin', openMenu);
+        menu.addEventListener('focusout', handleLeave);
+
+        // Click outside to close
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                closeMenu();
             }
         });
 
-        // Scroll animation for character
+        // Scroll animation for character (unchanged)
         let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const characterContainer = document.getElementById('characterContainer');
             const characterImg = document.getElementById('characterImg');
-            
+
             // Calculate scroll progress (0 to 1)
             const scrollProgress = Math.min(scrollTop / window.innerHeight, 1);
-            
+
             // Animate character based on scroll
-                if (scrollProgress > 0.3) {
+            if (scrollProgress > 0.3) {
                 characterContainer.classList.add('scrolled');
                 // Change to full body image
-                    characterImg.src = 'Images/character-full.jpg';
+                characterImg.src = 'Images/character-full.jpg';
             } else {
                 characterContainer.classList.remove('scrolled');
                 // Change back to upper body image
-                    characterImg.src = 'Images/character-upper.png';
+                characterImg.src = 'Images/character-upper.png';
             }
-            
+
             lastScrollTop = scrollTop;
         });
     </script>
