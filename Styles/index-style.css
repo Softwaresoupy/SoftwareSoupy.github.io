@@ -77,4 +77,4 @@ body { overflow-x: hidden; }
 .star-decoration { position: absolute; width: 35px; height: 35px; z-index: 0; }
 .star-1 { top: 25%; left: 4%;  width: 50px; height: 50px; transform: rotate(90deg);}
 .star-2 { top: 85%; left: 15%; transform: rotate(270deg);}
-.star-3 { bottom: 30%; left: 10%; }
+.star-3 { top: 50%; right: 10%; }
